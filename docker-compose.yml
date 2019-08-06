@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  db:
+    image: postgres:9.4-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: jpa_collection_demo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - bao-play-net
+    ports:
+      - 5432:5432
+volumes:
+  db_data:
+networks:
+  bao-play-net:
+    driver: "bridge"
